@@ -1,0 +1,17 @@
+name: GitHub Actions Demo
+on: 
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - run: echo "${{ github.event.pull_request.number }}"
+             echo "${{ github.event.number }}"
+             echo github.event.number = ${{ github.event.number  }}
+             echo github.event.pull_request.number = ${{ github.event.pull_request.number }}
+             echo github.event.issue.number = ${{ github.event.issue.number }}
