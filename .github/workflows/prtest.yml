@@ -10,7 +10,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-      - run: echo "${{ github.event.pull_request.number }}"
+      - name: get pr number
+        run: echo "${{ github.event.pull_request.number }}"
              echo "${{ github.event.number }}"
              echo github.event.number = ${{ github.event.number  }}
              echo github.event.pull_request.number = ${{ github.event.pull_request.number }}
