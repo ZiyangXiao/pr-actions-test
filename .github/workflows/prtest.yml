@@ -6,9 +6,10 @@ on:
     branches: [ main ]
 jobs:
   Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     env:
         branch_name: main
+        HUB: localhost:5000
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
@@ -18,9 +19,15 @@ jobs:
              echo github.event.number = ${{ github.event.number  }}
              echo github.event.pull_request.number = ${{ github.event.pull_request.number }}
              echo github.event.issue.number = ${{ github.event.issue.number }}
+             docker pull hello-world
       - name: test branch 
-        run: export TAG=${branch_name}-dev-latest
-             echo "${TAG}"
+        run: 
+             # TAG=${branch_name}-dev-latest
+             TAG=$(${branch_name}-dev-latest)
+             docker tag hello-world:latest ${HUB}/hello-world:${TAG}&&
+             docker push ${HUB}/hello-world:${TAG}
+             # export TAG=${branch_name}-dev-latest
+             # echo "${TAG}"
              #docker pull hello-world &&
              #docker tag hello-world localhost:5000/hello-world:${TAG} &&
              #docker push localhost:5000/hello-world:${TAG}
