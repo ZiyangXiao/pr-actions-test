@@ -19,7 +19,7 @@ jobs:
              echo github.event.pull_request.number = ${{ github.event.pull_request.number }}
              echo github.event.issue.number = ${{ github.event.issue.number }}
       - name: test branch 
-        run: TAG=${branch_name}-dev-latest
+        run: TAG="${branch_name}-dev-latest"
              docker pull hello-world &&
              docker tag hello-world localhost:5000/hello-world:${TAG} &&
              docker push localhost:5000/hello-world:${TAG}
