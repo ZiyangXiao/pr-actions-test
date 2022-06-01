@@ -22,9 +22,9 @@ jobs:
              docker pull hello-world
       - name: test branch 
         run: 
-             # TAG=${branch_name}-dev-latest
+             
              TAG=${branch_name}-dev-latest
-             docker tag hello-world:latest ${HUB}/hello-world:${TAG}&&
+             docker tag hello-world:latest ${HUB}/hello-world:${TAG}
              docker push ${HUB}/hello-world:${TAG}
              # export TAG=${branch_name}-dev-latest
              # echo "${TAG}"
