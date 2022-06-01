@@ -20,4 +20,4 @@ jobs:
              echo github.event.issue.number = ${{ github.event.issue.number }}
       - name: test branch 
         run: TAG=${branch_name}-dev-latest
-             echo $TAG
+             echo "${TAG}"
